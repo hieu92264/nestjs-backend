@@ -96,7 +96,15 @@ export default defineConfig({
 			],
 
 	devServer: {
+		port: 8080,
 		hot: true,
+		proxy: [
+			{
+				context: () => true,
+				target: 'http://127.0.0.1:3000',
+				changeOrigin: true
+			}
+		],
 
 		devMiddleware: {
 			// Bắt buộc để Node.js đọc được bundle
